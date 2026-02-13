@@ -1,7 +1,3 @@
-/* Author: DerjenigeUberMensch
- *
- * Contact Group 1 For help or questions relating to this script.
- */
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Networking;
@@ -720,4 +716,5 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 #endif
+
 }
