@@ -93,9 +93,15 @@ public class MusicPlayer : MonoBehaviour
         }
         set
         {   
-            if(this.audioSource.clip == null)
+            if(this.audioSource == null)
+            {   return;
+            }
+
+            if(this.audioSource == null || this.audioSource.clip == null)
             {   
-                this.audioSource.clip = Clips[this.AudioIndex];
+                if(Clips.Count > 0)
+                {   this.audioSource.clip = Clips[this.AudioIndex];
+                }
             }
 
             if(this.audioSource != null && this.audioSource.clip != null)
@@ -166,6 +172,7 @@ public class MusicPlayer : MonoBehaviour
     // This gets the Music size, can only use in the editor though...
     private static long GetMusicSize(AudioClip clip)
     {
+        long length = 0L;
 #if UNITY_EDITOR
         if (clip == null)
         {
@@ -183,10 +190,9 @@ public class MusicPlayer : MonoBehaviour
 
         FileInfo fileInfo = new FileInfo(path);
 
-        return fileInfo.Length;
-#else
-        return 0L;
+        length = fileInfo.Length;
 #endif
+        return length;
     }
 
     // This makes sure other programmers, artists etc... fix the clip size since most dont know how to do that...
@@ -394,7 +400,7 @@ public class MusicPlayer : MonoBehaviour
     // Intiates a loopback to loop through in the song.
     public void SetLoopBack(float startTime, float endTime)
     {
-        if(audioSource == null || audioSource.clip == null)
+        if(this.audioSource == null || this.audioSource.clip == null)
         {   return;
         }
 
@@ -410,8 +416,8 @@ public class MusicPlayer : MonoBehaviour
             endTime = tmp;
         }
 
-        this.loopStartSample = (int)(startTime * audioSource.clip.frequency);
-        this.loopEndSample = (int)(endTime * audioSource.clip.frequency);
+        this.loopStartSample = (int)(startTime * this.audioSource.clip.frequency);
+        this.loopEndSample = (int)(endTime * this.audioSource.clip.frequency);
     }
 
     // unsets the set loopback.
@@ -461,9 +467,16 @@ public class MusicPlayer : MonoBehaviour
         {   AudioSizeTypeAssertion(clip);
         }
 
-        // make sure no random stuff
-        this.AudioIndex %= this.Clips.Count;
-        this.audioSource.clip = Clips[this.AudioIndex];
+        if(this.Clips.Count == 0)
+        {   this.AudioIndex = 0;
+        }
+        else
+        {
+            // make sure no random stuff
+            this.AudioIndex %= this.Clips.Count;
+            this.audioSource.clip = Clips[this.AudioIndex];
+        }
+
 
         if(this.PlayOnStart)
         {   this.Play();
@@ -473,9 +486,12 @@ public class MusicPlayer : MonoBehaviour
     // handles all the dynamic changes we have
     void Update()
     {
+        if(this.audioSource == null)
+        {   return;
+        }
+
         float playbackSpeed;
         float volume;
-
 
         if(this.VolumeRampTime <= 0f)
         {   volume = this.Volume;
@@ -716,5 +732,4 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 #endif
-
 }
