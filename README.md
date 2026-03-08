@@ -1,6 +1,41 @@
-# mpv2
+# Music Player Version 2
 
-code commented.
+This is a easy to use, developer/non-developer friendly Music Player/Music Handler for Unity C#
+
+
+## Basic usage
+1. Attach the MusicPlayer.cs script to your game object.
+2. Add Clips to play in Clips.
+3. Set your settings.
+4. Done!
+
+## Code Usage
+1. Attach the MusicPlayer.cs script to your game object.
+2. Initialize MusicPlayer using `GetComponent<MusicPlayer>()`.
+3. Use in your code.
+4. Done!
+
+## API
+
+You can view the source file [MusicPlayer.cs](./MusicPlayer.cs) or use the quick reference below!
+
+| Function                | Description                                                         |
+|---------------------------------|---------------------------------------------------------------------|
+| ***Next()*** | Calls the next music to be played. (Does NOT auto play if run and not playing) |
+| ***Prev()*** |  Calls previous next music to be played. (Does NOT auto play if run and not playing)  |
+| ***AddMusic(Clip music)*** | Add Music to the end of the play Clips |
+| ***RemoveMusic(Clip music)*** | Remove Music from the Clips List |
+| ***Play()*** | Start Playing Music |
+| ***Pause()*** | Pause Music |
+| ***Stop()*** | Stop Music |
+| ***PlayPause()*** |  Plays if currently paused/Never Played, and Pauses if currently Playing |
+| ***Rewind()*** | Rewinds music this is the same as Stop() and Play() |
+| ***Seek(float timeStampSeconds)*** | This is the same as setting the CurrentTime variable, which sets the current time in the track being played. |
+| ***SetLoopBack(float startTimeSeconds, float endTimeSeconds)*** | If for wahtever reason you want to loop back a certain time period (in seconds) you can do that so if you want to loop the 1s and 5s mark in the track you would call SetLoopBack(1, 5) |
+| ***UnsetLoopBack()*** | This unsets any currently playing loopback, no side-effects (nothing happens) if there is no loopback set. music_player.UnsetLoopBack() |
+| ***IsLoopBackEnabled()*** | Returns if we are currently running a loopback. |
+| ***GetCurrentClip()*** | Gets the current clip running. |
+
 
 ```C#
 using UnityEngine;
