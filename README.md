@@ -4,9 +4,22 @@ This is a easy to use, developer/non-developer friendly Music Player/Music Handl
 
 
 ## Basic usage
-1. Attach the MusicPlayer.cs script to your game object.
-2. Add Clips to play in Clips.
+1. Find your game Object
+
+![Step 1](./images/Step1.png)
+
+2. Attach the MusicPlayer.cs script to your game object.
+
+![Step 2](./images/Step2.png)
+
+3. Add Clips to play in Clips.
+
+![Step 3](./images/Step3.png)
+
 3. Set your settings.
+
+![Step 4](./images/Step4.png)
+
 4. Done!
 
 ## Code Usage
