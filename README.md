@@ -26,8 +26,11 @@ This is a easy to use, developer/non-developer friendly Music Player/Music Handl
 ## Code Usage
 1. Attach the MusicPlayer.cs script to your game object.
 2. Initialize MusicPlayer using `GetComponent<MusicPlayer>()`.
-3. Use in your code.
-4. Done!
+
+![Step 5](./images/Step5.png)
+
+4. Use in your code.
+5. Done!
 
 ## API
 
