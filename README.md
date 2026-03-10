@@ -2,6 +2,7 @@
 
 This is a easy to use, developer/non-developer friendly Music Player/Music Handler for Unity C#
 
+***NOTE: Unforunately due to some unity quirks reversing audio in NON DecompressOnLoad wont work, I dont know how to get around this as im not a unity expert***
 
 ## Basic usage
 1. Find your game Object
